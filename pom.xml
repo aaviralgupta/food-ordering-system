@@ -60,7 +60,7 @@
         </dependencies>
     </dependencyManagement>
 
-A    <dependencies>
+    <dependencies>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
