@@ -19,6 +19,7 @@
         <module>order-service</module>
         <module>common</module>
         <module>common/common-domain</module>
+        <module>infrastructure</module>
     </modules>
 
     <properties>
