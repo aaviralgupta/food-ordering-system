@@ -44,7 +44,7 @@ CREATE TABLE "order".order_address
 (
     id uuid NOT NULL,
     order_id uuid NOT NULL,
-    street uuid character varying COLLATE pg_catalog."default" NOT NULL,
+    street character varying COLLATE pg_catalog."default" NOT NULL,
     postal_code character varying COLLATE pg_catalog."default" NOT NULL,
     city character varying COLLATE pg_catalog."default" NOT NULL,
     CONSTRAINT order_address_pkey PRIMARY KEY (id,order_id)

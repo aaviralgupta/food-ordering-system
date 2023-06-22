@@ -12,21 +12,23 @@ order-service:
   restaurant-approval-response-topic-name: restaurant-approval-response
 
 spring:
+  sql:
+    init:
+      mode: ALWAYS
+      schema-locations: classpath:init-schema.sql
   jpa:
     open-in-view: false
     show-sql: true
-    database-platform: org.hibernate.dialect.PostgreSql9Dialect
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
     properties:
       hibernate:
-        dialect: org.hibernate.dialect.PostgreSql9Dialect
+        dialect: org.hibernate.dialect.PostgreSQLDialect
   datasource:
     url: jdbc:postgresql://localhost:5432/postgres?currentSchema=order&binaryTransfer=true&reWriteBatchedInserts=true&stringtype=unspecified
     username: postgres
     password: admin
     driver-class-name: org.postgresql.Driver
     platform: postgres
-    schema: classpath:init-schema.sql
-    initialization-mode: always
 
 kafka-config:
   bootstrap-servers: bootstrap servers
