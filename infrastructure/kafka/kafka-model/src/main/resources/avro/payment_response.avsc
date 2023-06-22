@@ -55,10 +55,10 @@
       }
     },
     {
-      "name": "paymentOrderStatus",
+      "name": "paymentStatus",
       "type": {
         "type": "enum",
-        "name": "PaymentOrderStatus",
+        "name": "PaymentStatus",
         "symbols": ["COMPLETED", "CANCELLED", "FAILED"]
       }
     },
