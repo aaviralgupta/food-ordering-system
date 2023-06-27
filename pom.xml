@@ -23,6 +23,7 @@
         <module>common/common-application</module>
         <module>customer-service</module>
         <module>payment-service</module>
+        <module>restaurant-service</module>
     </modules>
 
     <properties>
