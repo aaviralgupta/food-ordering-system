@@ -3,8 +3,8 @@ package com.food.ordering.system.restaurant.service.messaging.mapper;
 import com.food.ordering.system.kafka.order.avro.model.OrderApprovalStatus;
 import com.food.ordering.system.kafka.order.avro.model.RestaurantApprovalRequestAvroModel;
 import com.food.ordering.system.kafka.order.avro.model.RestaurantApprovalResponseAvroModel;
-import com.food.ordering.system.domain.valueobject.ProductId;
-import com.food.ordering.system.domain.valueobject.RestaurantOrderStatus;
+import com.food.ordering.system.order.service.domain.valueobject.ProductId;
+import com.food.ordering.system.order.service.domain.valueobject.RestaurantOrderStatus;
 import com.food.ordering.system.restaurant.service.domain.dto.RestaurantApprovalRequest;
 import com.food.ordering.system.restaurant.service.domain.entity.Product;
 import com.food.ordering.system.restaurant.service.domain.event.OrderApprovedEvent;
@@ -16,7 +16,7 @@ import java.time.ZonedDateTime;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
-import static com.food.ordering.system.domain.DomainConstants.UTC;
+import static com.food.ordering.system.order.service.domain.DomainConstants.UTC;
 
 @Component
 public class RestaurantMessagingDataMapper {

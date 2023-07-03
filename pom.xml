@@ -25,7 +25,6 @@
         <module>payment-service</module>
         <module>restaurant-service</module>
         <module>common/common-dataaccess</module>
-        <module>infrastructure/saga</module>
     </modules>
 
     <properties>
