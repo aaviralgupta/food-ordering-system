@@ -3,12 +3,12 @@ package com.food.ordering.system.order.service.messaging.mapper;
 import com.food.ordering.system.kafka.order.avro.model.*;
 import com.food.ordering.system.order.service.domain.dto.message.PaymentResponse;
 import com.food.ordering.system.order.service.domain.dto.message.RestaurantApprovalResponse;
-import com.food.ordering.system.order.service.domain.entity.Order;
-import com.food.ordering.system.order.service.domain.event.OrderCancelledEvent;
-import com.food.ordering.system.order.service.domain.event.OrderCreatedEvent;
-import com.food.ordering.system.order.service.domain.event.OrderPaidEvent;
-import com.food.ordering.system.order.service.domain.valueobject.OrderApprovalStatus;
-import com.food.ordering.system.order.service.domain.valueobject.PaymentStatus;
+import com.food.ordering.system.domain.entity.Order;
+import com.food.ordering.system.domain.event.OrderCancelledEvent;
+import com.food.ordering.system.domain.event.OrderCreatedEvent;
+import com.food.ordering.system.domain.event.OrderPaidEvent;
+import com.food.ordering.system.domain.valueobject.OrderApprovalStatus;
+import com.food.ordering.system.domain.valueobject.PaymentStatus;
 import org.springframework.stereotype.Component;
 
 import java.util.UUID;

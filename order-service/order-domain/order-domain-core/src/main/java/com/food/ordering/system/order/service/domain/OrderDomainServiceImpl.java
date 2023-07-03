@@ -1,14 +1,14 @@
 package com.food.ordering.system.order.service.domain;
 
-import com.food.ordering.system.order.service.domain.event.publisher.DomainEventPublisher;
-import com.food.ordering.system.order.service.domain.valueobject.ProductId;
-import com.food.ordering.system.order.service.domain.entity.Order;
-import com.food.ordering.system.order.service.domain.entity.Product;
-import com.food.ordering.system.order.service.domain.entity.Restaurant;
-import com.food.ordering.system.order.service.domain.event.OrderCancelledEvent;
-import com.food.ordering.system.order.service.domain.event.OrderCreatedEvent;
-import com.food.ordering.system.order.service.domain.event.OrderPaidEvent;
-import com.food.ordering.system.order.service.domain.exception.OrderDomainException;
+import com.food.ordering.system.domain.event.publisher.DomainEventPublisher;
+import com.food.ordering.system.domain.valueobject.ProductId;
+import com.food.ordering.system.domain.entity.Order;
+import com.food.ordering.system.domain.entity.Product;
+import com.food.ordering.system.domain.entity.Restaurant;
+import com.food.ordering.system.domain.event.OrderCancelledEvent;
+import com.food.ordering.system.domain.event.OrderCreatedEvent;
+import com.food.ordering.system.domain.event.OrderPaidEvent;
+import com.food.ordering.system.domain.exception.OrderDomainException;
 import lombok.extern.slf4j.Slf4j;
 
 import java.time.ZoneId;
@@ -18,7 +18,7 @@ import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-import static com.food.ordering.system.order.service.domain.DomainConstants.UTC;
+import static com.food.ordering.system.domain.DomainConstants.UTC;
 
 @Slf4j
 public class OrderDomainServiceImpl implements OrderDomainService{

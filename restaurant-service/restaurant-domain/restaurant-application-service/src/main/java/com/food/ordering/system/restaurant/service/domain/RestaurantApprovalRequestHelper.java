@@ -1,6 +1,6 @@
 package com.food.ordering.system.restaurant.service.domain;
 
-import com.food.ordering.system.order.service.domain.valueobject.OrderId;
+import com.food.ordering.system.domain.valueobject.OrderId;
 import com.food.ordering.system.restaurant.service.domain.dto.RestaurantApprovalRequest;
 import com.food.ordering.system.restaurant.service.domain.entity.Restaurant;
 import com.food.ordering.system.restaurant.service.domain.event.OrderApprovalEvent;
