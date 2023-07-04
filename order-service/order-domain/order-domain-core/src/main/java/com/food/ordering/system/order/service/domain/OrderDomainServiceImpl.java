@@ -1,7 +1,7 @@
 package com.food.ordering.system.order.service.domain;
 
-import com.food.ordering.system.order.service.domain.event.publisher.DomainEventPublisher;
-import com.food.ordering.system.order.service.domain.valueobject.ProductId;
+import com.food.ordering.system.domain.event.publisher.DomainEventPublisher;
+import com.food.ordering.system.domain.valueobject.ProductId;
 import com.food.ordering.system.order.service.domain.entity.Order;
 import com.food.ordering.system.order.service.domain.entity.Product;
 import com.food.ordering.system.order.service.domain.entity.Restaurant;
@@ -18,7 +18,7 @@ import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-import static com.food.ordering.system.order.service.domain.DomainConstants.UTC;
+import static com.food.ordering.system.domain.DomainConstants.UTC;
 
 @Slf4j
 public class OrderDomainServiceImpl implements OrderDomainService{
