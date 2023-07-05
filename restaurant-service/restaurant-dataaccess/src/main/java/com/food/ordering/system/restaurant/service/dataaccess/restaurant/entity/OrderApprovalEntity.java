@@ -21,5 +21,4 @@ public class OrderApprovalEntity {
     private UUID orderId;
     @Enumerated(EnumType.STRING)
     private OrderApprovalStatus status;
-    private ZonedDateTime createdAt;
 }
