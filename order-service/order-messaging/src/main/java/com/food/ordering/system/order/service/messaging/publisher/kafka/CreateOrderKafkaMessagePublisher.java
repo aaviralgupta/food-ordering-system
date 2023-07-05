@@ -4,7 +4,7 @@ import com.food.ordering.system.kafka.order.avro.model.PaymentRequestAvroModel;
 import com.food.ordering.system.kafka.producer.KafkaMessageHelper;
 import com.food.ordering.system.kafka.producer.service.KafkaProducer;
 import com.food.ordering.system.order.service.domain.config.OrderServiceConfigData;
-import com.food.ordering.system.domain.event.OrderCreatedEvent;
+import com.food.ordering.system.order.service.domain.event.OrderCreatedEvent;
 import com.food.ordering.system.order.service.domain.ports.output.message.publisher.payment.OrderCreatedPaymentRequestMessagePublisher;
 import com.food.ordering.system.order.service.messaging.mapper.OrderMessagingDataMapper;
 import lombok.extern.slf4j.Slf4j;
@@ -28,7 +28,7 @@ public class CreateOrderKafkaMessagePublisher implements OrderCreatedPaymentRequ
 
     @Override
     public void publish(OrderCreatedEvent domainEvent) {
-        String orderId= domainEvent.getOrder().getId().toString();
+        String orderId= domainEvent.getOrder().getId().getValue().toString();
         log.info("Received Order created event with order id : {}",orderId);
 
         try {

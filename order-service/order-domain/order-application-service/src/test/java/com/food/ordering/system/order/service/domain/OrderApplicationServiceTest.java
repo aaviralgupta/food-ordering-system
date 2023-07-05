@@ -1,20 +1,20 @@
 package com.food.ordering.system.order.service.domain;
 
+import com.food.ordering.system.domain.valueobject.*;
 import com.food.ordering.system.order.service.domain.dto.create.CreateOrderCommand;
 import com.food.ordering.system.order.service.domain.dto.create.CreateOrderResponse;
 import com.food.ordering.system.order.service.domain.dto.create.OrderAddress;
 import com.food.ordering.system.order.service.domain.dto.create.OrderItem;
-import com.food.ordering.system.domain.entity.Customer;
-import com.food.ordering.system.domain.entity.Order;
-import com.food.ordering.system.domain.entity.Product;
-import com.food.ordering.system.domain.entity.Restaurant;
-import com.food.ordering.system.domain.exception.OrderDomainException;
+import com.food.ordering.system.order.service.domain.entity.Customer;
+import com.food.ordering.system.order.service.domain.entity.Order;
+import com.food.ordering.system.order.service.domain.entity.Product;
+import com.food.ordering.system.order.service.domain.entity.Restaurant;
+import com.food.ordering.system.order.service.domain.exception.OrderDomainException;
 import com.food.ordering.system.order.service.domain.mapper.OrderDataMapper;
 import com.food.ordering.system.order.service.domain.ports.input.service.OrderApplicationService;
 import com.food.ordering.system.order.service.domain.ports.output.repository.CustomerRepository;
 import com.food.ordering.system.order.service.domain.ports.output.repository.OrderRepository;
 import com.food.ordering.system.order.service.domain.ports.output.repository.RestaurantRepository;
-import com.food.ordering.system.domain.valueobject.*;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;

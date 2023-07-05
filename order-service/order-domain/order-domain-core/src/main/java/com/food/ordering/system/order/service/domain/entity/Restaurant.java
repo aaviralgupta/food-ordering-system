@@ -1,5 +1,6 @@
-package com.food.ordering.system.domain.entity;
+package com.food.ordering.system.order.service.domain.entity;
 
+import com.food.ordering.system.domain.entity.AggregateRoot;
 import com.food.ordering.system.domain.valueobject.RestaurantId;
 
 import java.util.List;

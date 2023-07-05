@@ -110,7 +110,7 @@ public class PaymentDomainServiceImpl implements PaymentDomainService{
             failureMessages.add("Customer with id: "+ creditEntry.getCustomerId().getValue()
                     + " doesn't have enough credit according to credit history");
         }
-        if(!creditEntry.getTotalCreditAmount().equals(totalCreditHistory.subtract(totalCreditHistory))){
+        if(!creditEntry.getTotalCreditAmount().equals(totalCreditHistory.subtract(totalDebitHistory))){
             log.error("Credit history total is not equal to current credit for customer id: {} !",
                     creditEntry.getCustomerId().getValue());
             failureMessages.add("Credit history total is not equal to current credit for customer id: "+

@@ -6,7 +6,7 @@ logging:
     com.food.ordering.system: DEBUG
 
 payment-service:
-  payment-request-topic-name: payment_request
+  payment-request-topic-name: payment-request
   payment-response-topic-name: payment-response
 
 spring:
@@ -29,7 +29,7 @@ spring:
     platform: postgres
 
 kafka-config:
-  bootstrap-servers: bootstrap servers
+  bootstrap-servers: localhost:19092, localhost:29092, localhost:39092
   schema-registry-url-key: schema.registry.url
   schema-registry-url: http://localhost:8081
   num-of-partitions: 3
@@ -47,10 +47,9 @@ kafka-producer-config:
   retry-count: 5
 
 kafka-consumer-config:
-  key-deserializer-class: org.apache.kafka.common.serialization.StringDeserializer
-  value-serializer-class: io.confluent.kafka.serializers.KafkaAvroDeserializer
+  key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+  value-deserializer: io.confluent.kafka.serializers.KafkaAvroDeserializer
   payment-consumer-group-id: payment-topic-consumer
-  customer-group-id: customer-topic-consumer
   auto-offset-reset: earliest
   specific-avro-reader-key: specific.avro.reader
   specific-avro-reader: true
