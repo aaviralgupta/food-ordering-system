@@ -1,6 +1,7 @@
 package com.food.ordering.system.order.service.dataaccess.outbox.restaurantapproval.adapter;
 
 import com.food.ordering.system.order.service.dataaccess.outbox.payment.exception.PaymentOutboxNotFoundException;
+import com.food.ordering.system.order.service.dataaccess.outbox.restaurantapproval.exception.ApprovalOutboxNotFoundException;
 import com.food.ordering.system.order.service.dataaccess.outbox.restaurantapproval.mapper.ApprovalOutboxDataMapper;
 import com.food.ordering.system.order.service.dataaccess.outbox.restaurantapproval.repository.ApprovalOutboxJpaRepository;
 import com.food.ordering.system.order.service.domain.outbox.model.approval.OrderApprovalOutboxMessage;
@@ -39,7 +40,7 @@ public class ApprovalOutboxRepositoryImpl implements ApprovalOutboxRepository {
         List<SagaStatus> sagaStatusList = Arrays.asList(sagaStatus);
         return Optional.of(approvalOutboxJpaRepository.findByTypeAndOutboxStatusAndSagaStatus(type,
                         outboxStatus, sagaStatusList)
-                .orElseThrow(() -> new PaymentOutboxNotFoundException("Approval outbox object could not" +
+                .orElseThrow(() -> new ApprovalOutboxNotFoundException("Approval outbox object could not" +
                         " be found for saga Type :" + type))
                 .stream()
                 .map(approvalOutboxDataMapper::approvalOutboxEntityToOrderApprovalOutboxMessage)
