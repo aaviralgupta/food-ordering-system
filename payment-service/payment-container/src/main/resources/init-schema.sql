@@ -59,7 +59,6 @@ CREATE TABLE "order".order_outbox
     type character varying COLLATE pg_catalog."default" NOT NULL,
     payload jsonb NOT NULL,
     outbox_status outbox_status NOT NULL,
-    saga_status saga_status NOT NULL,
     payment_status payment_status NOT NULL,
     version integer NOT NULL,
     CONSTRAINT order_outbox_pkey PRIMARY KEY (id)
