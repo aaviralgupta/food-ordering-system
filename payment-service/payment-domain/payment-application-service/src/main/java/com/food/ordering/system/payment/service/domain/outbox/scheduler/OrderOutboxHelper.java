@@ -8,7 +8,6 @@ import com.food.ordering.system.payment.service.domain.exception.PaymentDomainEx
 import com.food.ordering.system.payment.service.domain.outbox.model.OrderEventPayload;
 import com.food.ordering.system.payment.service.domain.outbox.model.OrderOutboxMessage;
 import com.food.ordering.system.payment.service.domain.ports.output.repository.OrderOutboxRepository;
-import com.food.ordering.system.saga.SagaStatus;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
