@@ -15,7 +15,7 @@ import java.util.UUID;
 
 @Component
 public class PaymentMessagingDataMapper {
-    public PaymentRequest paymentRequestAvroModelToPaymentRequest(PaymentRequestAvroModel paymentRequestAvroModel){
+    public PaymentRequest  paymentRequestAvroModelToPaymentRequest(PaymentRequestAvroModel paymentRequestAvroModel){
         return PaymentRequest.builder()
                 .id(paymentRequestAvroModel.getId())
                 .sagaId(paymentRequestAvroModel.getSagaId())

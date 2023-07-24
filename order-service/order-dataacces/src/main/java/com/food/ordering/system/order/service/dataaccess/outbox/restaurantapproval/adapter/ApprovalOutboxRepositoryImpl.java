@@ -39,7 +39,7 @@ public class ApprovalOutboxRepositoryImpl implements ApprovalOutboxRepository {
                                                                                              OutboxStatus outboxStatus,
                                                                                              SagaStatus... sagaStatus) {
         List<SagaStatus> sagaStatusList = Arrays.asList(sagaStatus);
-        return Optional.of(approvalOutboxJpaRepository.findByTypeAndOutboxStatusAndSagaStatus(type,
+        return Optional.of(approvalOutboxJpaRepository.findByTypeAndOutboxStatusAndSagaStatusIn(type,
                         outboxStatus, sagaStatusList)
                 .orElseThrow(() -> new ApprovalOutboxNotFoundException("Approval outbox object could not" +
                         " be found for saga Type :" + type))
@@ -53,7 +53,7 @@ public class ApprovalOutboxRepositoryImpl implements ApprovalOutboxRepository {
                                                                                  UUID sagaId,
                                                                                  SagaStatus... sagaStatus) {
         List<SagaStatus> sagaStatusList = Arrays.asList(sagaStatus);
-        return approvalOutboxJpaRepository.findByTypeAndSagaIdAndSagaStatus(type, sagaId, sagaStatusList)
+        return approvalOutboxJpaRepository.findByTypeAndSagaIdAndSagaStatusIn(type, sagaId, sagaStatusList)
                 .map(approvalOutboxDataMapper::approvalOutboxEntityToOrderApprovalOutboxMessage);
     }
 
@@ -62,6 +62,6 @@ public class ApprovalOutboxRepositoryImpl implements ApprovalOutboxRepository {
                                                          OutboxStatus outboxStatus,
                                                          SagaStatus... sagaStatus) {
         List<SagaStatus> sagaStatusList = Arrays.asList(sagaStatus);
-        approvalOutboxJpaRepository.deleteByTypeAndOutboxStatusAndSagaStatus(type, outboxStatus, sagaStatusList);
+        approvalOutboxJpaRepository.deleteByTypeAndOutboxStatusAndSagaStatusIn(type, outboxStatus, sagaStatusList);
     }
 }

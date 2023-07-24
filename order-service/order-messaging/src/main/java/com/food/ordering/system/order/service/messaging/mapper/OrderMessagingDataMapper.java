@@ -19,7 +19,7 @@ public class OrderMessagingDataMapper {
                                                                         paymentResponseAvroModel) {
         return PaymentResponse.builder()
                 .id(paymentResponseAvroModel.getId())
-                .sagaId("")
+                .sagaId(paymentResponseAvroModel.getSagaId())
                 .paymentId(paymentResponseAvroModel.getPaymentId())
                 .customerId(paymentResponseAvroModel.getCustomerId())
                 .orderId(paymentResponseAvroModel.getOrderId())
@@ -34,7 +34,7 @@ public class OrderMessagingDataMapper {
             RestaurantApprovalResponseAvroModel restaurantApprovalResponseAvroModel){
         return RestaurantApprovalResponse.builder()
                 .id(restaurantApprovalResponseAvroModel.getId())
-                .sagaId("")
+                .sagaId(restaurantApprovalResponseAvroModel.getSagaId())
                 .restaurantId(restaurantApprovalResponseAvroModel.getRestaurantId())
                 .orderId(restaurantApprovalResponseAvroModel.getOrderId())
                 .orderApprovalStatus(OrderApprovalStatus.valueOf(restaurantApprovalResponseAvroModel

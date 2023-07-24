@@ -39,7 +39,7 @@ public class PaymentOutboxRepositoryImpl implements PaymentOutboxRepository {
                                                                                             OutboxStatus outboxStatus,
                                                                                             SagaStatus... sagaStatus) {
         List<SagaStatus> sagaStatusList = Arrays.asList(sagaStatus);
-        return Optional.of(paymentOutboxJpaRepository.findByTypeAndOutboxStatusAndSagaStatus(type,
+        return Optional.of(paymentOutboxJpaRepository.findByTypeAndOutboxStatusAndSagaStatusIn(type,
                         outboxStatus, sagaStatusList)
                 .orElseThrow(() -> new PaymentOutboxNotFoundException("Payment outbox object could not" +
                         " be found for saga Type :" + type))
@@ -53,7 +53,7 @@ public class PaymentOutboxRepositoryImpl implements PaymentOutboxRepository {
                                                                                 UUID sagaId,
                                                                                 SagaStatus... sagaStatus) {
         List<SagaStatus> sagaStatusList = Arrays.asList(sagaStatus);
-        return paymentOutboxJpaRepository.findByTypeAndSagaIdAndSagaStatus(type, sagaId, sagaStatusList)
+        return paymentOutboxJpaRepository.findByTypeAndSagaIdAndSagaStatusIn(type, sagaId, sagaStatusList)
                 .map(paymentOutboxDataMapper::paymentOutboxEntityToOrderPaymentOutboxMessage);
     }
 
@@ -62,6 +62,6 @@ public class PaymentOutboxRepositoryImpl implements PaymentOutboxRepository {
                                                          OutboxStatus outboxStatus,
                                                          SagaStatus... sagaStatus) {
         List<SagaStatus> sagaStatusList = Arrays.asList(sagaStatus);
-        paymentOutboxJpaRepository.deleteByTypeAndOutboxStatusAndSagaStatus(type, outboxStatus, sagaStatusList);
+        paymentOutboxJpaRepository.deleteByTypeAndOutboxStatusAndSagaStatusIn(type, outboxStatus, sagaStatusList);
     }
 }

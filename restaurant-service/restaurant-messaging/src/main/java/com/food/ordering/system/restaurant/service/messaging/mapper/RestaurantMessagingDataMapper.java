@@ -9,6 +9,7 @@ import com.food.ordering.system.restaurant.service.domain.dto.RestaurantApproval
 import com.food.ordering.system.restaurant.service.domain.entity.Product;
 import com.food.ordering.system.restaurant.service.domain.event.OrderApprovedEvent;
 import com.food.ordering.system.restaurant.service.domain.event.OrderRejectedEvent;
+import com.food.ordering.system.restaurant.service.domain.outbox.model.OrderEventPayload;
 import org.springframework.stereotype.Component;
 
 import java.time.ZoneId;
@@ -20,31 +21,18 @@ import static com.food.ordering.system.domain.DomainConstants.UTC;
 
 @Component
 public class RestaurantMessagingDataMapper {
-    public RestaurantApprovalResponseAvroModel
-    orderApprovedEventToRestaurantApprovalResponseAvroModel(OrderApprovedEvent orderApprovedEvent){
-        return RestaurantApprovalResponseAvroModel.newBuilder()
-                .setId(UUID.randomUUID().toString())
-                .setSagaId("")
-                .setOrderId(orderApprovedEvent.getOrderApproval().getOrderId().getValue().toString())
-                .setRestaurantId(orderApprovedEvent.getOrderApproval().getRestaurantId().getValue().toString())
-                .setOrderApprovalStatus(OrderApprovalStatus
-                        .valueOf(orderApprovedEvent.getOrderApproval().getApprovalStatus().name()))
-                .setCreatedAt(ZonedDateTime.now(ZoneId.of(UTC)).toInstant())
-                .setFailureMessages(orderApprovedEvent.getFailureMessages())
-                .build();
-    }
 
     public RestaurantApprovalResponseAvroModel
-    orderRejectedEventToRestaurantApprovalResponseAvroModel(OrderRejectedEvent orderRejectedEvent){
+    orderEventPayloadToRestaurantApprovalResponseAvroModel(String sagaId,OrderEventPayload orderEventPayload){
         return RestaurantApprovalResponseAvroModel.newBuilder()
                 .setId(UUID.randomUUID().toString())
-                .setSagaId("")
-                .setOrderId(orderRejectedEvent.getOrderApproval().getOrderId().getValue().toString())
-                .setRestaurantId(orderRejectedEvent.getOrderApproval().getRestaurantId().getValue().toString())
+                .setSagaId(sagaId)
+                .setOrderId(orderEventPayload.getOrderId())
+                .setRestaurantId(orderEventPayload.getRestaurantId())
                 .setOrderApprovalStatus(OrderApprovalStatus
-                        .valueOf(orderRejectedEvent.getOrderApproval().getApprovalStatus().name()))
+                        .valueOf(orderEventPayload.getOrderApprovalStatus()))
                 .setCreatedAt(ZonedDateTime.now(ZoneId.of(UTC)).toInstant())
-                .setFailureMessages(orderRejectedEvent.getFailureMessages())
+                .setFailureMessages(orderEventPayload.getFailureMessages())
                 .build();
     }
 

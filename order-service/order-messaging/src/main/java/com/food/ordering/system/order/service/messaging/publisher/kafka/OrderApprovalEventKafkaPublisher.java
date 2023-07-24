@@ -47,9 +47,9 @@ public class OrderApprovalEventKafkaPublisher implements RestaurantApprovalReque
             RestaurantApprovalRequestAvroModel restaurantApprovalRequestAvroModel = orderMessagingDataMapper
                     .orderApprovalEventToRestaurantApprovalRequestAvroModel(sagaId, orderApprovalEventPayload);
 
-            kafkaProducer.send(orderServiceConfigData.getPaymentRequestTopicName(), sagaId,
+            kafkaProducer.send(orderServiceConfigData.getRestaurantApprovalRequestTopicName(), sagaId,
                     restaurantApprovalRequestAvroModel,
-                    kafkaMessageHelper.getKafkaCallback(orderServiceConfigData.getPaymentRequestTopicName(),
+                    kafkaMessageHelper.getKafkaCallback(orderServiceConfigData.getRestaurantApprovalRequestTopicName(),
                             restaurantApprovalRequestAvroModel,
                             orderApprovalOutboxMessage,
                             outboxCallback,
