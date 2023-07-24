@@ -26,22 +26,20 @@ public class OrderDomainServiceImpl implements OrderDomainService{
 
     @Override
     public OrderCreatedEvent validateAndInitiateOrder(Order order,
-                                                      Restaurant restaurant,
-                                                      DomainEventPublisher<OrderCreatedEvent>
-                                                                  orderCreatedEventPublisher) {
+                                                      Restaurant restaurant) {
         validateRestaurant(restaurant);
         setOrderProductInformation(order, restaurant);
         order.validateOrder();
         order.initializeOrder();
         log.info("Order with id : {} is initialized", order.getId().getValue());
-        return new OrderCreatedEvent(order, ZonedDateTime.now(ZoneId.of(UTC)), orderCreatedEventPublisher);
+        return new OrderCreatedEvent(order, ZonedDateTime.now(ZoneId.of(UTC)));
     }
 
     @Override
-    public OrderPaidEvent payOrder(Order order, DomainEventPublisher<OrderPaidEvent> orderPaidEventPublisher) {
+    public OrderPaidEvent payOrder(Order order) {
         order.pay();
         log.info("Order with id: {} is paid",order.getId().getValue());
-        return new OrderPaidEvent(order, ZonedDateTime.now(ZoneId.of(UTC)), orderPaidEventPublisher);
+        return new OrderPaidEvent(order, ZonedDateTime.now(ZoneId.of(UTC)));
     }
 
     @Override
@@ -51,12 +49,10 @@ public class OrderDomainServiceImpl implements OrderDomainService{
     }
 
     @Override
-    public OrderCancelledEvent cancelOrderPayment(Order order, List<String> failureMessages,
-                                                  DomainEventPublisher<OrderCancelledEvent>
-                                                          orderCancelledEventPublisher) {
+    public OrderCancelledEvent cancelOrderPayment(Order order, List<String> failureMessages) {
         order.initCancel(failureMessages);
         log.info("Order payment is cancelling with id: {}",order.getId().getValue());
-        return new OrderCancelledEvent(order, ZonedDateTime.now(ZoneId.of(UTC)), orderCancelledEventPublisher);
+        return new OrderCancelledEvent(order, ZonedDateTime.now(ZoneId.of(UTC)));
     }
 
     @Override
@@ -67,7 +63,7 @@ public class OrderDomainServiceImpl implements OrderDomainService{
 
     private void validateRestaurant(Restaurant restaurant) {
         if(!restaurant.isActive()){
-            throw new OrderDomainException("Restraunt with Id " + restaurant.getId().getValue() +
+            throw new OrderDomainException("Restaurant with Id " + restaurant.getId().getValue() +
                     " is currently not active!");
         }
     }

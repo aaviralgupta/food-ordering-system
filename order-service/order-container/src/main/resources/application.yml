@@ -10,12 +10,14 @@ order-service:
   payment-response-topic-name: payment-response
   restaurant-approval-request-topic-name: restaurant-approval-request
   restaurant-approval-response-topic-name: restaurant-approval-response
+  outbox-scheduler-fixed-rate: 10000
+  outbox-scheduler-initial-delay: 10000
 
 spring:
-  sql:
-    init:
-      mode: ALWAYS
-      schema-locations: classpath:init-schema.sql
+  #sql:
+  #  init:
+  #    mode: ALWAYS
+  #    schema-locations: classpath:init-schema.sql
   jpa:
     open-in-view: false
     show-sql: true
@@ -28,6 +30,8 @@ spring:
     username: postgres
     password: admin
     driver-class-name: org.postgresql.Driver
+    schema: classpath:init-schema.sql
+    initialization-mode: always
     platform: postgres
 
 kafka-config:

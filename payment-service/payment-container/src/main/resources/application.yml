@@ -8,12 +8,14 @@ logging:
 payment-service:
   payment-request-topic-name: payment-request
   payment-response-topic-name: payment-response
+  outbox-scheduler-fixed-rate: 10000
+  outbox-scheduler-initial-delay: 10000
 
 spring:
-  sql:
-    init:
-      mode: ALWAYS
-      schema-locations: classpath:init-schema.sql,classpath:init-data.sql
+  #sql:
+  #  init:
+  #   mode: ALWAYS
+  #  schema-locations: classpath:init-schema.sql,classpath:init-data.sql
   jpa:
     open-in-view: false
     show-sql: true
@@ -26,6 +28,9 @@ spring:
     username: postgres
     password: admin
     driver-class-name: org.postgresql.Driver
+    schema: classpath:init-schema.sql
+    data: classpath:init-data.sql
+    initialization-mode: always
     platform: postgres
 
 kafka-config:
