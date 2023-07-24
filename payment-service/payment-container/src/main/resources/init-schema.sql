@@ -49,8 +49,8 @@ CREATE TABLE "payment".credit_history
 DROP TYPE IF EXISTS outbox_status;
 CREATE TYPE outbox_status AS ENUM ('STARTED', 'COMPLETED', 'FAILED');
 
-DROP TABLE IF EXISTS "order".order_outbox CASCADE;
-CREATE TABLE "order".order_outbox
+DROP TABLE IF EXISTS "payment".order_outbox CASCADE;
+CREATE TABLE "payment".order_outbox
 (
     id uuid NOT NULL,
     saga_id uuid NOT NULL,
@@ -65,9 +65,9 @@ CREATE TABLE "order".order_outbox
 );
 
 CREATE INDEX "payment_order_outbox_saga_status"
-    ON "order".order_outbox
+    ON "payment".order_outbox
     (type,payment_status);
 
 CREATE UNIQUE INDEX "payment_order_outbox_saga_id"
-    ON "order".order_outbox
+    ON "payment".order_outbox
     (type, saga_id, payment_status, outbox_status);
