@@ -31,6 +31,10 @@
             <groupId>com.food.ordering.system</groupId>
             <artifactId>customer-messaging</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.food.ordering.system</groupId>
+            <artifactId>customer-application</artifactId>
+        </dependency>
     </dependencies>
 
     <build>

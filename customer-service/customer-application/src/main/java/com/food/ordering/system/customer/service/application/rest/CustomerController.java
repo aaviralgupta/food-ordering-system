@@ -4,7 +4,6 @@ import com.food.ordering.system.customer.service.domain.create.CreateCustomerCom
 import com.food.ordering.system.customer.service.domain.create.CreateCustomerResponse;
 import com.food.ordering.system.customer.service.domain.ports.input.service.CustomerApplicationService;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,8 +20,8 @@ public class CustomerController {
         this.customerApplicationService = customerApplicationService;
     }
 
-    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<CreateCustomerResponse> createOrder(@RequestBody CreateCustomerCommand createCustomerCommand){
+    @PostMapping
+    public ResponseEntity<CreateCustomerResponse> createCustomer(@RequestBody CreateCustomerCommand createCustomerCommand){
         log.info("Creating customer with username: {}",createCustomerCommand.getUsername());
         CreateCustomerResponse createCustomerResponse= customerApplicationService.createCustomer(createCustomerCommand);
         return ResponseEntity.ok(createCustomerResponse);

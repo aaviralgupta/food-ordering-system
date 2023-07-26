@@ -16,7 +16,7 @@ public class CreateCustomerCommand {
     @NotNull
     private final String username;
     @NotNull
-    private final String firstname;
+    private final String firstName;
     @NotNull
     private final String lastName;
 }

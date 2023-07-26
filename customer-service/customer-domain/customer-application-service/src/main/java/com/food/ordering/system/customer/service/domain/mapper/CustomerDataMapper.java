@@ -4,11 +4,13 @@ import com.food.ordering.system.customer.service.domain.create.CreateCustomerCom
 import com.food.ordering.system.customer.service.domain.create.CreateCustomerResponse;
 import com.food.ordering.system.customer.service.domain.entity.Customer;
 import com.food.ordering.system.domain.valueobject.CustomerId;
+import org.springframework.stereotype.Component;
 
+@Component
 public class CustomerDataMapper {
     public Customer createCustomerCommandToCustomer(CreateCustomerCommand createCustomerCommand) {
         return new Customer(new CustomerId(createCustomerCommand.getCustomerId()),
-                createCustomerCommand.getFirstname(),
+                createCustomerCommand.getFirstName(),
                 createCustomerCommand.getLastName(),
                 createCustomerCommand.getUsername());
     }

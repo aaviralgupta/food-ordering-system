@@ -8,7 +8,6 @@ import com.food.ordering.system.kafka.order.avro.model.CustomerAvroModel;
 import com.food.ordering.system.kafka.producer.service.KafkaProducer;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.producer.RecordMetadata;
-import org.apache.kafka.common.protocol.types.Field;
 import org.springframework.kafka.support.SendResult;
 import org.springframework.stereotype.Component;
 import org.springframework.util.concurrent.ListenableFutureCallback;

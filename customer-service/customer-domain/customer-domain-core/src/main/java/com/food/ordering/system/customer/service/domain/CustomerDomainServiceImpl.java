@@ -21,7 +21,7 @@ public class CustomerDomainServiceImpl implements CustomerDomainService{
     private void validateFirstName(String firstName) {
         if (firstName.length()<2)
             throw new CustomerDomainException("First name should contain at least 2 chars");
-        String regex = "^(?=.*[a-zA-Z])(?=.*[0-9])[A-Za-z0-9]+$";
+        String regex = "^[a-zA-Z0-9]+$";
         Pattern pattern = Pattern.compile(regex);
         if (!pattern.matcher(firstName).matches())
             throw new CustomerDomainException("First name should contains characters & numerals");
@@ -30,7 +30,7 @@ public class CustomerDomainServiceImpl implements CustomerDomainService{
     private void validateUserName(String username) {
         if (username.length()<2)
             throw new CustomerDomainException("Username should contain at least 2 chars");
-        String regex = "^(?=.*[a-zA-Z])(?=.*[0-9])[A-Za-z0-9]+$";
+        String regex = "^[a-zA-Z0-9]+$";
         Pattern pattern = Pattern.compile(regex);
         if (!pattern.matcher(username).matches())
             throw new CustomerDomainException("Username should contains characters & numerals");
