@@ -5,10 +5,10 @@ customer-service:
   customer-topic-name: customer
 
 spring:
-  #sql:
-  #  init:
-  #    mode: ALWAYS
-  #    schema-locations: classpath:init-schema.sql,classpath:init-data.sql
+  sql:
+    init:
+      mode: ALWAYS
+      schema-locations: classpath:init-schema.sql
   jpa:
     open-in-view: false
     show-sql: true
@@ -21,8 +21,6 @@ spring:
     username: postgres
     password: admin
     driver-class-name: org.postgresql.Driver
-    schema: classpath:init-schema.sql
-    initialization-mode: always
     platform: postgres
 
 kafka-config:
