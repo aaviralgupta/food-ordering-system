@@ -1,0 +1,74 @@
+{
+	"info": {
+		"_postman_id": "77f9c287-49a0-49b3-896e-3f2959117a16",
+		"name": "food-ordering-system",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20534986"
+	},
+	"item": [
+		{
+			"name": "create customer",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"customerId\": \"d215b5f8-0249-4dc5-89a3-51fd148cfb41\",\n  \"username\": \"user1\",\n  \"firstName\": \"First\",\n  \"lastName\": \"User\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8184/customers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8184",
+					"path": [
+						"customers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create order",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"customerId\": \"d215b5f8-0249-4dc5-89a3-51fd148cfb41\",\n  \"restaurantId\": \"d215b5f8-0249-4dc5-89a3-51fd148cfb45\",\n  \"address\": {\n    \"street\": \"street_1\",\n    \"postalCode\": \"1000AB\",\n    \"city\": \"Amsterdam\"\n  },\n  \"price\": 200.00,\n  \"orderItems\": [\n    {\n      \"productId\": \"d215b5f8-0249-4dc5-89a3-51fd148cfb48\",\n      \"quantity\": 1,\n      \"price\": 50.00,\n      \"subTotal\": 50.00\n    },\n    {\n      \"productId\": \"d215b5f8-0249-4dc5-89a3-51fd148cfb48\",\n      \"quantity\": 3,\n      \"price\": 50.00,\n      \"subTotal\": 150.00\n    }\n  ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8181/orders",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8181",
+					"path": [
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get order details",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}
