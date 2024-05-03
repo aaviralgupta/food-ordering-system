@@ -1,6 +1,6 @@
 package com.food.ordering.system.order.service.dataaccess.order.entity;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.math.BigDecimal;

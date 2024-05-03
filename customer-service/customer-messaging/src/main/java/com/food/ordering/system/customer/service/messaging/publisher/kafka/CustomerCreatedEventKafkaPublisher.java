@@ -10,7 +10,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.producer.RecordMetadata;
 import org.springframework.kafka.support.SendResult;
 import org.springframework.stereotype.Component;
-import org.springframework.util.concurrent.ListenableFutureCallback;
+
+import java.util.function.BiConsumer;
 
 @Slf4j
 @Component
@@ -43,22 +44,20 @@ public class CustomerCreatedEventKafkaPublisher implements CustomerMessagePublis
         }
     }
 
-    private ListenableFutureCallback<SendResult<String, CustomerAvroModel>>
+    private BiConsumer<SendResult<String, CustomerAvroModel>, Throwable>
     getCallback(CustomerAvroModel customerAvroModel) {
-        return new ListenableFutureCallback<SendResult<String, CustomerAvroModel>>() {
-            @Override
-            public void onFailure(Throwable ex) {
-                log.error("Error while sending message for id: {} to topic : {}", customerAvroModel.getId(),
-                        customerServiceConfigData.getCustomerTopicName());
-            }
 
-            @Override
-            public void onSuccess(SendResult<String, CustomerAvroModel> result) {
+        return (result, ex) -> {
+            if(ex==null) {
                 RecordMetadata metadata = result.getRecordMetadata();
                 log.info("Received new metadata . Topic : {}, Partition: {}, Offset: {} ",
                         metadata.topic(),
                         metadata.partition(),
                         metadata.offset());
+
+            } else {
+                log.error("Error while sending message for id: {} to topic : {}", customerAvroModel.getId(),
+                        customerServiceConfigData.getCustomerTopicName());
             }
         };
     }
